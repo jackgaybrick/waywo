@@ -7,7 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+ <% if user_signed_in? %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :get %> | 
+    <%= link_to "Home", root_path %> |
+    <%= link_to "My Likes", likes_path %> |
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
+  <% end %>
+  <section>
+<hr style="border: 1px outset #08088A;">
+  </section>
 <%= yield %>
 
 </body>
